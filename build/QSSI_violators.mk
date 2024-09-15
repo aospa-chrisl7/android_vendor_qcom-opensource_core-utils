@@ -1,12 +1,11 @@
 # Copyright (c) 2018, The Linux Foundation. All rights reserved.
 
-BOARD_OPENSOURCE_DIR ?= vendor/qcom/opensource
 .PHONY: qssi_violators
 qssi_violators: $(PRODUCT_OUT)/module-info.json
 # Remove existing QSSI violators list (if present)
 	if [ -s $$OUT/QSSI_violators.txt ]; then rm $$OUT/QSSI_violators.txt; fi
 # Generate QSSI violators list
-	$(BOARD_OPENSOURCE_DIR)/core-utils/build/QSSI_violators
+	vendor/qcom/opensource/core-utils/build/QSSI_violators
 
 # module-info.json is not included when ONE_SHOT_MAKEFILE,
 # hence disable qssi_violators for that as well.
